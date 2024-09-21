@@ -10,7 +10,7 @@ st.set_page_config(page_title="Student Performance App", layout="wide")
 st.sidebar.title("Upload and Settings")
 
 # File uploader
-uploaded_file = st.sidebar.file_uploader("C:\Users\hp\Downloads\RegressionML\Student_Performance.csv", type=["csv"])
+uploaded_file = st.sidebar.file_uploader('C:\Users\hp\Downloads\RegressionML\Student_Performance.csv', type=["csv"])
 
 # If file is uploaded, proceed
 if uploaded_file is not None:
