@@ -3,15 +3,13 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
-import os
 
-# Define the path to the CSV file on your local machine
-csv_path = 'https://raw.githubusercontent.com/PolakiVenkataSaiVineeth/machinelearningapp/main/Student_Performance.csv' # Local file path
+# Define the URL to the CSV file on GitHub
+csv_url = 'https://raw.githubusercontent.com/PolakiVenkataSaiVineeth/machinelearningapp/main/Student_Performance.csv'  # GitHub raw URL
 
-# Check if the file exists before attempting to read it
-if os.path.exists(csv_path):
+try:
     # Load the dataset
-    data = pd.read_csv(csv_path)
+    data = pd.read_csv(csv_url)
 
     # Display the dataset to the user
     st.write("Dataset Preview:")
@@ -56,6 +54,5 @@ if os.path.exists(csv_path):
         if st.button("Predict"):
             prediction = model.predict(input_df)
             st.write(f"The predicted 'performance index' is: {prediction[0]:.2f}")
-else:
-    st.error(f"The file '{csv_path}' was not found. Please check the file path.")
-
+except Exception as e:
+    st.error(f"The file '{csv_url}' was not found. Please check the file path. Error: {e}")
