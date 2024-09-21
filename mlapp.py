@@ -16,7 +16,7 @@ try:
     st.write(data.head())
 
     # Specify that 'performance index' is the target column
-    target_column = 'performance_index'  # Make sure this matches the column name exactly
+    target_column = 'Performance Index'  # Make sure this matches the column name exactly
 
     # Check if 'performance index' is in the dataset
     if target_column not in data.columns:
