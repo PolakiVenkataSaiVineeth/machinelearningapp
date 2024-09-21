@@ -7,8 +7,8 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 # Title of the app
 st.title('Student Performance Prediction using Random Forest')
 
-# Load the dataset directly (update the path to your dataset)
-csv_path = 'C:/Users/hp/Downloads/RegressionML/Student_Performance.csv' # Update this with the actual file path
+# Load dataset (Update the path to your dataset)
+csv_path = 'C:/Users/hp/Downloads/RegressionML/Student_Performance.csv'  # <-- Update this path!
 data = pd.read_csv(csv_path)
 
 # Show the dataset preview
@@ -62,15 +62,17 @@ else:
     # Section for user input and prediction
     st.subheader('Make Predictions')
 
-    # Allow user to input values for the selected features
-    user_input = []
+    # Allow the user to input values for the features
+    user_input = {}
     for feature in features:
-        user_input.append(st.number_input(f"Enter value for {feature}", step=1.0, format="%.2f"))
+        user_input[feature] = st.number_input(f"Enter value for {feature}", step=1.0, format="%.2f")
 
     # Predict based on user input if model is trained
     if st.button('Predict'):
         if st.session_state.model is not None:
-            prediction = st.session_state.model.predict([user_input])
-            st.write(f'### Predicted {target}: {prediction[0]:.2f}')
+            user_input_values = [list(user_input.values())]
+            prediction = st.session_state.model.predict(user_input_values)
+            st.write(f'### Predicted Performance Index: {prediction[0]:.2f}')
         else:
             st.write('Please train the model before making predictions.')
+
