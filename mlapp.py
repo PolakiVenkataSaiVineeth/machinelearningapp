@@ -6,7 +6,7 @@ from sklearn.metrics import mean_squared_error
 import os
 
 # Define the path to the CSV file on your local machine
-csv_path = 'C:/Users/hp/Downloads/RegressionML/Student_Performance.csv' # Local file path
+csv_path = 'C:/Users/hp/Downloads/RegressionML' # Local file path
 
 # Check if the file exists before attempting to read it
 if os.path.exists(csv_path):
